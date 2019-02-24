@@ -9,6 +9,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
+  public keyboardVisible: boolean;
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -19,8 +21,23 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
+      this.watchKeyboard();
+    });
+  }
+
+  watchKeyboard() {
+    window.addEventListener('keyboardDidHide', () => {
+      setTimeout(() => {
+        if (!this.keyboardVisible) {
+          window.scrollTo(0, 0);
+          window.document.body.scrollTop = 0;
+        }
+      }, 100);
+      this.keyboardVisible = false;
+    });
+
+    window.addEventListener('keyboardDidShow', () => {
+      this.keyboardVisible = true;
     });
   }
 }

@@ -19,7 +19,6 @@ export class Tab1Page {
     const modal = await this.modalController.create({
       component: AddDeviceComponent,
       componentProps: {},
-      animated: false,
     });
     return await modal.present();
   }

@@ -1,3 +1,33 @@
-<p>
-  add-device works!
-</p>
+<ion-card>
+  <ion-row class="button-row">
+    <ion-col size="2">
+      <ion-button fill="clear" (click)="close()">Cancel</ion-button>
+    </ion-col>
+    <ion-col size="2">
+      <ion-button fill="clear" [disabled]="!addDeviceForm.valid" (click)="submit()">Submit</ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="text-row">
+    <ion-col size="12">
+      <p class="title center">Add New Device</p>
+      <p class="description center">Complete the form below and press submit to add a new device.</p>
+    </ion-col>
+  </ion-row>
+
+  <form [formGroup]="addDeviceForm">
+    <ion-item lines="none" class="input-item">
+      <ion-label>Device Id</ion-label>
+      <ion-input formControlName="deviceName" type="text" placeholder="e.g. Pixel 2"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none" class="input-item">
+      <ion-label>Platform</ion-label>
+      <ion-select formControlName="platform" interface="popover" placeholder="Please Select">
+        <ion-select-option value="android">Android</ion-select-option>
+        <ion-select-option value="ios">iOS</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </form>
+
+</ion-card>
