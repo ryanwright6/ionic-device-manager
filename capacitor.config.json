@@ -1,0 +1,6 @@
+{
+  "appId": "uk.co.rolleragency.devicemanager",
+  "appName": "Roller Device Manager",
+  "bundledWebRuntime": false,
+  "webDir": "www"
+}
