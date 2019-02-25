@@ -41,4 +41,28 @@ export class DevicesService {
       });
     });
   }
+
+  async bookDevice(device: any, employee: any) {
+    return new Promise(async (resolve, reject) => {
+      const index = await this.deviceList.findIndex(obj => {
+        return obj.name === device.name;
+      });
+
+      console.log(index);
+      const currentDate = Date.now();
+      this.deviceList[index] = {
+        name: device.name,
+        platform: device.platform,
+        status: 'occupied',
+        employee: employee,
+        checkedOut: currentDate,
+      };
+      this.storage.set('devices', this.deviceList).then(() => {
+        resolve();
+      }).catch(error => {
+        reject(error);
+      });
+    });
+
+  }
 }

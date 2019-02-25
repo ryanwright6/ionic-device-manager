@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page';
 import { SharedModule } from '../modules/shared/shared.module';
 import { AddDeviceComponent } from '../components/add-device/add-device.component';
+import { BookingComponent } from '../components/booking/booking.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { AddDeviceComponent } from '../components/add-device/add-device.componen
     SharedModule,
   ],
   declarations: [Tab1Page],
-  entryComponents: [AddDeviceComponent],
+  entryComponents: [AddDeviceComponent, BookingComponent],
 })
 export class Tab1PageModule { }

@@ -3,6 +3,8 @@ import { ModalController, LoadingController } from '@ionic/angular';
 import { AddDeviceComponent } from '../components/add-device/add-device.component';
 import { DevicesService } from '../services/devices.service';
 import { animate, state, style, transition, trigger, stagger, query, keyframes } from '@angular/animations';
+import { BookingComponent } from '../components/booking/booking.component';
+import { EmployeeService } from '../services/employee.service';
 
 @Component({
   selector: 'app-tab1',
@@ -29,21 +31,24 @@ export class Tab1Page {
   constructor(
     private modalController: ModalController,
     public devicesService: DevicesService,
+    private employeeService: EmployeeService,
   ) {
-    this.populateDevices();
-  }
-
-  async populateDevices() {
-    this.loading = true;
-    this.devicesService.getStoredDevices().then(() => {
-      this.loading = false;
-    });
+    this.devicesService.getStoredDevices();
+    this.employeeService.getStoredEmployees();
   }
 
   async addDevice() {
     const modal = await this.modalController.create({
       component: AddDeviceComponent,
       componentProps: {},
+    });
+    return await modal.present();
+  }
+
+  async book(device: any) {
+    const modal = await this.modalController.create({
+      component: BookingComponent,
+      componentProps: { device: device },
     });
     return await modal.present();
   }

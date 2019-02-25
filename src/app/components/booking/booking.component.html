@@ -1,0 +1,28 @@
+<ion-card>
+  <ion-row class="flex-space-between">
+    <ion-col size="2">
+      <ion-button fill="clear" (click)="close()">Cancel</ion-button>
+    </ion-col>
+    <ion-col size="2">
+      <ion-button fill="clear" [disabled]="employeeSelected === undefined" (click)="book()">Submit</ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="text-row">
+    <ion-col size="12">
+      <p class="title center">Device Checkout</p>
+      <p class="description center">Please select yourself from the list of employees below to checkout the
+        {{device.name}}</p>
+    </ion-col>
+  </ion-row>
+
+  <div class="employee-container">
+    <div class="employee-item flex-space-between" padding *ngFor="let employee of employeeService.employeeList"
+      (click)="select(employee)">
+      <ion-label>{{employee.firstName}} {{employee.lastName}}</ion-label>
+      <ion-icon color="primary" slot="start" name="checkmark"
+        *ngIf="employeeSelected !== undefined && employeeSelected.id === employee.id"></ion-icon>
+    </div>
+  </div>
+
+</ion-card>

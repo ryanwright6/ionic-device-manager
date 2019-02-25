@@ -102,7 +102,7 @@ ion-label {
   }
 }
 
-.button-row {
+.flex-space-between {
   display: flex;
   justify-content: space-between;
 }
@@ -111,4 +111,23 @@ ion-label {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+//Booking
+
+.employee-container {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  max-height: 340px;
+  overflow: scroll;
+}
+
+.employee-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 17px;
+  ion-label {
+    padding: 10px 6px;
+  }
+  ion-icon {
+    font-size: 32px;
+  }
 }

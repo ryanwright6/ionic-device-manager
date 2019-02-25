@@ -4,11 +4,13 @@ import { AddDeviceComponent } from 'src/app/components/add-device/add-device.com
 import { IonicModule } from '@ionic/angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddEmployeeComponent } from 'src/app/components/add-employee/add-employee.component';
+import { BookingComponent } from 'src/app/components/booking/booking.component';
 
 @NgModule({
   declarations: [
     AddDeviceComponent,
-    AddEmployeeComponent
+    AddEmployeeComponent,
+    BookingComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { AddEmployeeComponent } from 'src/app/components/add-employee/add-employ
   ],
   exports: [
     AddDeviceComponent,
-    AddEmployeeComponent
+    AddEmployeeComponent,
+    BookingComponent
   ],
 })
 export class SharedModule { }

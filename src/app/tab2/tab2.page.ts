@@ -14,7 +14,6 @@ export class Tab2Page {
     public employeeService: EmployeeService,
     private modalController: ModalController
   ) {
-    this.populateEmployees();
   }
 
   headerColour(department: string) {
@@ -36,13 +35,6 @@ export class Tab2Page {
     }
     return colour;
 
-  }
-
-  async populateEmployees() {
-    this.loading = true;
-    this.employeeService.getStoredEmployees().then(() => {
-      this.loading = false;
-    });
   }
 
   async addEmployee() {
