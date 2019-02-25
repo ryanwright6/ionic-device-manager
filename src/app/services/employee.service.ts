@@ -58,4 +58,18 @@ export class EmployeeService {
     });
   }
 
+  async deleteEmployee(id: string) {
+    return new Promise(async (resolve, reject) => {
+      const index = await this.employeeList.findIndex(employee => {
+        return id === employee.id;
+      });
+      this.employeeList.splice(index, 1);
+      this.storage.set('employees', this.employeeList).then(() => {
+        resolve();
+      }).catch(error => {
+        reject(error);
+      });
+    });
+  }
+
 }

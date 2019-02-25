@@ -85,4 +85,14 @@ export class AddEmployeeComponent implements OnInit {
       }
     }
   }
+
+  delete() {
+    const id = this.employee.id;
+    this.employeeService.deleteEmployee(id).then(() => {
+      this.modalController.dismiss();
+      this.toastService.presentToast(
+        'The employee was successfully removed from the Roller employee list'
+      );
+    });
+  }
 }

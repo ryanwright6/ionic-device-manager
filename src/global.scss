@@ -56,23 +56,6 @@ ion-badge {
   opacity: 0.4;
 }
 
-form {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  margin-top: 16px;
-}
-
-ion-label {
-  font-weight: 600;
-}
-
-.input-item {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 10px 0;
-  ion-input {
-    margin-left: 24px;
-  }
-}
-
 .custom-card-header {
   display: flex;
   justify-content: space-between;
@@ -97,4 +80,36 @@ ion-label {
 
 ion-card-subtitle {
   margin-top: 8px;
+}
+
+//Modal Styles
+
+form {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 16px;
+  margin-bottom: 60px;
+}
+
+ion-label {
+  font-weight: 600;
+}
+
+.input-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  ion-input {
+    margin-left: 24px;
+  }
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 16px;
 }
