@@ -4,14 +4,15 @@
       <ion-button fill="clear" (click)="close()">Cancel</ion-button>
     </ion-col>
     <ion-col size="2">
-      <ion-button fill="clear" [disabled]="!addEmployeeForm.valid" (click)="submit(addEmployeeForm)">Submit</ion-button>
+      <ion-button fill="clear" [disabled]="!addEmployeeForm.valid" (click)="submit(addEmployeeForm)">
+        {{ editing ? 'Save' : 'Submit'}}</ion-button>
     </ion-col>
   </ion-row>
 
   <ion-row class="text-row">
     <ion-col size="12">
-      <p class="title center">Add New Employee</p>
-      <p class="description center">Complete the form below and press submit to add a new employee.</p>
+      <p class="title center">{{title}}</p>
+      <p class="description center">{{description}}</p>
     </ion-col>
   </ion-row>
 

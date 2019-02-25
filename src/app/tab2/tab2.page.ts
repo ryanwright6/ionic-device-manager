@@ -52,4 +52,12 @@ export class Tab2Page {
     });
     return await modal.present();
   }
+
+  async editEmployee(employee: any) {
+    const modal = await this.modalController.create({
+      component: AddEmployeeComponent,
+      componentProps: { employee: employee },
+    });
+    return await modal.present();
+  }
 }

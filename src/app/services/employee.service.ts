@@ -21,12 +21,35 @@ export class EmployeeService {
 
   async addEmployee(firstName: string, lastName: string, department: string, position: string) {
     return new Promise(async (resolve, reject) => {
+      const token = (Math.random() + 1).toString(36).substr(2, 10);
       this.employeeList.push({
         firstName: firstName,
         lastName: lastName,
         department: department,
-        position: position
+        position: position,
+        id: token
       });
+      this.storage.set('employees', this.employeeList).then(() => {
+        resolve();
+      }).catch(error => {
+        reject(error);
+      });
+    });
+  }
+
+
+  async editEmployee(firstName: string, lastName: string, department: string, position: string, id: string) {
+    return new Promise(async (resolve, reject) => {
+      const index = await this.employeeList.findIndex(employee => {
+        return id === employee.id;
+      });
+      this.employeeList[index] = {
+        firstName: firstName,
+        lastName: lastName,
+        department: department,
+        position: position,
+        id: id,
+      };
       this.storage.set('employees', this.employeeList).then(() => {
         resolve();
       }).catch(error => {
