@@ -23,6 +23,9 @@
       <ion-icon color="primary" slot="start" name="checkmark"
         *ngIf="employeeSelected !== undefined && employeeSelected.id === employee.id"></ion-icon>
     </div>
+    <div class="employee-item flex-center" padding *ngIf="employeeService.employeeList.length === 0">
+      <p> No employees added, you can add them on the <strong>Employees</strong> tab</p>
+    </div>
   </div>
 
 </ion-card>
