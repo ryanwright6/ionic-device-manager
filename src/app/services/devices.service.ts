@@ -14,12 +14,15 @@ export class DevicesService {
 
   getStoredDevices() {
     return this.storage.get('devices').then((val) => {
-      this.deviceList = val;
+      if (val !== null) {
+        this.deviceList = val;
+      }
     });
   }
 
   clearStoredDevices() {
     this.storage.clear();
+    this.deviceList = [];
   }
 
   async addDevice(deviceName: string, platform: string) {

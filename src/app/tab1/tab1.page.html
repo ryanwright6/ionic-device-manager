@@ -19,18 +19,17 @@
 <ion-content>
   <ion-progress-bar type="indeterminate" *ngIf="loading"></ion-progress-bar>
 
-  <div class="placeholder">
-    No devices added, press the + button to add a new device.
+  <div class="placeholder" *ngIf="devicesService.deviceList.length === 0">
+    No devices added, use the + icon to add a new device.
   </div>
 
   <ion-row>
-    <ion-col size="3">
+    <ion-col size="3" *ngFor="let device of devicesService.deviceList">
       <ion-card>
         <ion-card-header>
           <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-          <ion-card-title>Card Title</ion-card-title>
+          <ion-card-title>{{device.name}}</ion-card-title>
         </ion-card-header>
-
         <ion-card-content>
           Keep close to Nature's heart... and break clear away, once in awhile,
           and climb a mountain or spend a week in the woods. Wash your spirit clean.
