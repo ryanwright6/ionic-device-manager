@@ -32,6 +32,7 @@ export class DevicesService {
         platform: platform,
         status: 'vacant',
         employee: undefined,
+        checkedOut: undefined,
       });
       this.storage.set('devices', this.deviceList).then(() => {
         resolve();
