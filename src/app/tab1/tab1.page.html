@@ -26,17 +26,17 @@
   <ion-row>
     <ion-col size="3" *ngFor="let device of devicesService.deviceList">
       <ion-card>
-        <ion-card-header class="device-card-header">
+        <ion-card-header class="custom-card-header">
           <ion-card-title>{{device.name}}</ion-card-title>
           <ion-badge color="primary" *ngIf="device.status === 'vacant'">Vacant</ion-badge>
           <ion-badge color="danger" *ngIf="device.status === 'occupied'">Occupied</ion-badge>
         </ion-card-header>
         <ion-card-content>
-          <div class="device-item">
+          <div class="custom-item">
             <p class="label">Occupant</p>
             <p>{{device.employee ? device.employee : '-'}}</p>
           </div>
-          <div class="device-item">
+          <div class="custom-item">
             <p class="label">Date/Time</p>
             <p>{{device.checkedOut ? device.checkedOut : '-'}}</p>
           </div>

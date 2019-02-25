@@ -1,9 +1,42 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="addEmployee()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>
-      Tab Two
+      Employees
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-progress-bar type="indeterminate" *ngIf="loading"></ion-progress-bar>
+
+  <div class="placeholder" *ngIf="employeeService.employeeList.length === 0">
+    No employees, use the + icon to add a new employee.
+  </div>
+
+  <!-- <ion-row>
+    <ion-col size="3" *ngFor="let employee of employeeService.employeeList">
+      <ion-card>
+        <ion-card-header class="custom-card-header">
+          <ion-card-title>{{employee.name}}</ion-card-title>
+          <ion-badge color="primary" *ngIf="employee.status === 'vacant'">Vacant</ion-badge>
+          <ion-badge color="danger" *ngIf="employee.status === 'occupied'">Occupied</ion-badge>
+        </ion-card-header>
+        <ion-card-content>
+          <div class="custom-item">
+            <p class="label">Occupant</p>
+            <p>{{employee.employee ? employee.employee : '-'}}</p>
+          </div>
+          <div class="custom-item">
+            <p class="label">Date/Time</p>
+            <p>{{employee.checkedOut ? employee.checkedOut : '-'}}</p>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row> -->
+</ion-content>

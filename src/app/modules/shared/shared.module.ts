@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { AddDeviceComponent } from 'src/app/components/add-device/add-device.component';
 import { IonicModule } from '@ionic/angular';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AddEmployeeComponent } from 'src/app/components/add-employee/add-employee.component';
 
 @NgModule({
   declarations: [
-    AddDeviceComponent
+    AddDeviceComponent,
+    AddEmployeeComponent
   ],
   imports: [
     CommonModule,
@@ -14,7 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   exports: [
-    AddDeviceComponent
+    AddDeviceComponent,
+    AddEmployeeComponent
   ],
 })
 export class SharedModule { }

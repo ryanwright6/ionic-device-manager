@@ -73,14 +73,14 @@ ion-label {
   }
 }
 
-.device-card-header {
+.custom-card-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.device-item {
+.custom-item {
   display: flex;
   justify-content: space-between;
   &:first-child {
