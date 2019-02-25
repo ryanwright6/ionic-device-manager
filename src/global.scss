@@ -15,11 +15,13 @@
 .title {
   font-size: 32px;
   font-weight: 400;
+  color: #000000;
 }
 
 .description {
   font-size: 17px;
   font-weight: 400;
+  color: #000000;
 }
 
 .center {
@@ -29,7 +31,7 @@
 //Global Styles
 
 ion-content {
-  --background: #f1f1f1;
+  --background: #edecf2;
 }
 
 ion-modal {
@@ -43,6 +45,10 @@ ion-card {
 form {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   margin-top: 16px;
+}
+
+ion-label {
+  font-weight: 600;
 }
 
 .input-item {
