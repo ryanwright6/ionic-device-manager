@@ -42,6 +42,40 @@ export class DevicesService {
     });
   }
 
+  async editDevice(deviceName: string, platform: string, oldDeviceInfo: any) {
+    return new Promise(async (resolve, reject) => {
+      const index = await this.deviceList.findIndex(obj => {
+        return obj.name === oldDeviceInfo.name;
+      });
+      this.deviceList[index] = {
+        name: deviceName,
+        platform: platform,
+        status: oldDeviceInfo.status,
+        employee: oldDeviceInfo.employee,
+        checkedOut: oldDeviceInfo.checkedOut,
+      };
+      this.storage.set('devices', this.deviceList).then(() => {
+        resolve();
+      }).catch(error => {
+        reject(error);
+      });
+    });
+  }
+
+  async deleteDevice(device: any) {
+    return new Promise(async (resolve, reject) => {
+      const index = await this.deviceList.findIndex(obj => {
+        return obj.name === device.name;
+      });
+      this.deviceList.splice(index, 1);
+      this.storage.set('devices', this.deviceList).then(() => {
+        resolve();
+      }).catch(error => {
+        reject(error);
+      });
+    });
+  }
+
   async bookDevice(device: any, employee: any) {
     return new Promise(async (resolve, reject) => {
       const index = await this.deviceList.findIndex(obj => {

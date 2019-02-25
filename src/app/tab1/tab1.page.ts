@@ -40,10 +40,28 @@ export class Tab1Page {
     this.employeeService.getStoredEmployees();
   }
 
+  deviceClicked(device: any) {
+    if (this.editing) {
+      this.editDevice(device);
+    } else if (device.status === 'vacant') {
+      this.bookDevice(device);
+    } else {
+      this.returnDevice(device);
+    }
+  }
+
   async addDevice() {
     const modal = await this.modalController.create({
       component: AddDeviceComponent,
       componentProps: {},
+    });
+    return await modal.present();
+  }
+
+  async editDevice(device: any) {
+    const modal = await this.modalController.create({
+      component: AddDeviceComponent,
+      componentProps: { device: device },
     });
     return await modal.present();
   }

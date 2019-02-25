@@ -11,6 +11,10 @@ import { ToastService } from 'src/app/services/toast.service';
 })
 export class AddDeviceComponent implements OnInit {
   public addDeviceForm: FormGroup;
+  public device: any;
+  public editing: boolean;
+  public title = 'Add New Device';
+  public description = 'Complete the form below and press submit to add a new device.';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,7 +35,15 @@ export class AddDeviceComponent implements OnInit {
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    if (this.device !== undefined) {
+      this.editing = true;
+      this.title = 'Edit Device';
+      this.description = 'Edit the form below and press save to make your changes';
+      this.addDeviceForm.get('deviceName').setValue(this.device.name);
+      this.addDeviceForm.get('platform').setValue(this.device.platform);
+    }
+  }
 
   close() {
     this.modalController.dismiss();
@@ -43,13 +55,31 @@ export class AddDeviceComponent implements OnInit {
     } else {
       const deviceName: string = addDeviceForm.value.deviceName;
       const platform: string = addDeviceForm.value.platform;
-      this.devicesService.addDevice(deviceName, platform).then(() => {
-        this.modalController.dismiss();
-        this.toastService.presentToast(
-          deviceName + ' was successfully added to the Roller device list'
-        );
-      });
+      if (this.editing !== true) {
+        this.devicesService.addDevice(deviceName, platform).then(() => {
+          this.modalController.dismiss();
+          this.toastService.presentToast(
+            deviceName + ' was successfully added to the Roller device list'
+          );
+        });
+      } else {
+        this.devicesService.editDevice(deviceName, platform, this.device).then(() => {
+          this.modalController.dismiss();
+          this.toastService.presentToast(
+            deviceName + ' was successfully updated'
+          );
+        });
+      }
     }
+  }
+
+  delete() {
+    this.devicesService.deleteDevice(this.device).then(() => {
+      this.modalController.dismiss();
+      this.toastService.presentToast(
+        'The device was successfully removed from the Roller device list'
+      );
+    });
   }
 
 }
