@@ -18,25 +18,17 @@
     No employees, use the + icon to add a new employee.
   </div>
 
-  <!-- <ion-row>
+  <ion-row>
     <ion-col size="3" *ngFor="let employee of employeeService.employeeList">
       <ion-card>
-        <ion-card-header class="custom-card-header">
-          <ion-card-title>{{employee.name}}</ion-card-title>
-          <ion-badge color="primary" *ngIf="employee.status === 'vacant'">Vacant</ion-badge>
-          <ion-badge color="danger" *ngIf="employee.status === 'occupied'">Occupied</ion-badge>
+        <div class="department-header" [ngStyle]="headerColour(employee.department)">
+          {{employee.department}}
+        </div>
+        <ion-card-header>
+          <ion-card-title>{{employee.firstName}} {{employee.lastName}}</ion-card-title>
+          <ion-card-subtitle>{{employee.position}}</ion-card-subtitle>
         </ion-card-header>
-        <ion-card-content>
-          <div class="custom-item">
-            <p class="label">Occupant</p>
-            <p>{{employee.employee ? employee.employee : '-'}}</p>
-          </div>
-          <div class="custom-item">
-            <p class="label">Date/Time</p>
-            <p>{{employee.checkedOut ? employee.checkedOut : '-'}}</p>
-          </div>
-        </ion-card-content>
       </ion-card>
     </ion-col>
-  </ion-row> -->
+  </ion-row>
 </ion-content>

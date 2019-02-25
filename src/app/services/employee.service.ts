@@ -19,12 +19,13 @@ export class EmployeeService {
     });
   }
 
-  async addEmployee(firstName: string, lastName: string, department: string) {
+  async addEmployee(firstName: string, lastName: string, department: string, position: string) {
     return new Promise(async (resolve, reject) => {
       this.employeeList.push({
         firstName: firstName,
         lastName: lastName,
         department: department,
+        position: position
       });
       this.storage.set('employees', this.employeeList).then(() => {
         resolve();

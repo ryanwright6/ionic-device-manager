@@ -17,6 +17,27 @@ export class Tab2Page {
     this.populateEmployees();
   }
 
+  headerColour(department: string) {
+    let colour;
+    switch (department) {
+      case 'Marketing': colour = { background: '#7044ff' };
+        break;
+      case 'Commercial': colour = { background: '#0cd1e8' };
+        break;
+      case 'Development': colour = { background: '#3880ff' };
+        break;
+      case 'Design': colour = { background: '#10dc60' };
+        break;
+      case 'Project Management': colour = { background: '#ff9f05' };
+        break;
+      case 'Management': colour = { background: '#0eccac' };
+        break;
+      default:
+    }
+    return colour;
+
+  }
+
   async populateEmployees() {
     this.loading = true;
     this.employeeService.getStoredEmployees().then(() => {

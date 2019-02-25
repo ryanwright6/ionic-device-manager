@@ -37,6 +37,8 @@ export class AppComponent {
     });
 
     window.addEventListener('keyboardDidShow', () => {
+      window.scrollTo(0, 0);
+      window.document.body.scrollTop = 0;
       this.keyboardVisible = true;
     });
   }

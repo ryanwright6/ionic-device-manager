@@ -32,6 +32,10 @@ export class AddEmployeeComponent implements OnInit {
         '',
         Validators.compose([Validators.required]),
       ],
+      position: [
+        '',
+        Validators.compose([Validators.required]),
+      ],
     });
   }
 
@@ -48,7 +52,8 @@ export class AddEmployeeComponent implements OnInit {
       const firstName: string = addEmployeeForm.value.firstName;
       const lastName: string = addEmployeeForm.value.lastName;
       const department: string = addEmployeeForm.value.department;
-      this.employeeService.addEmployee(firstName, lastName, department).then(() => {
+      const position: string = addEmployeeForm.value.position;
+      this.employeeService.addEmployee(firstName, lastName, department, position).then(() => {
         this.modalController.dismiss();
         this.toastService.presentToast(
           firstName + lastName + ' was successfully added to the Roller employee list'
