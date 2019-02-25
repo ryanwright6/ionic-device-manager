@@ -46,4 +46,12 @@
 
   </form>
 
+  <ion-row *ngIf="editing">
+    <ion-col size="12" class="delete-col">
+      <ion-button fill="clear" color="danger" (click)="delete()">
+        Delete Employee
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
 </ion-card>

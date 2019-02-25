@@ -16,6 +16,7 @@
   font-size: 32px;
   font-weight: 400;
   color: #000000;
+  margin-top: 10px;
 }
 
 .description {
@@ -87,7 +88,6 @@ ion-card-subtitle {
 form {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   margin-top: 16px;
-  margin-bottom: 60px;
 }
 
 ion-label {
@@ -107,9 +107,7 @@ ion-label {
   justify-content: space-between;
 }
 
-.delete {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: 16px;
+.delete-col {
+  display: flex;
+  justify-content: center;
 }
