@@ -47,8 +47,6 @@ export class DevicesService {
       const index = await this.deviceList.findIndex(obj => {
         return obj.name === device.name;
       });
-
-      console.log(index);
       const currentDate = Date.now();
       this.deviceList[index] = {
         name: device.name,
@@ -63,6 +61,25 @@ export class DevicesService {
         reject(error);
       });
     });
+  }
 
+  async returnDevice(device: any) {
+    return new Promise(async (resolve, reject) => {
+      const index = await this.deviceList.findIndex(obj => {
+        return obj.name === device.name;
+      });
+      this.deviceList[index] = {
+        name: device.name,
+        platform: device.platform,
+        status: 'vacant',
+        employee: undefined,
+        checkedOut: undefined,
+      };
+      this.storage.set('devices', this.deviceList).then(() => {
+        resolve();
+      }).catch(error => {
+        reject(error);
+      });
+    });
   }
 }

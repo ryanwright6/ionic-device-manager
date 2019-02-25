@@ -15,14 +15,20 @@
 .title {
   font-size: 32px;
   font-weight: 400;
-  color: #000000;
   margin-top: 10px;
 }
 
 .description {
   font-size: 17px;
   font-weight: 400;
+}
+
+p {
   color: #000000;
+}
+
+ion-label {
+  font-weight: 600;
 }
 
 .center {
@@ -90,10 +96,6 @@ form {
   margin-top: 16px;
 }
 
-ion-label {
-  font-weight: 600;
-}
-
 .input-item {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding: 10px 0;
@@ -105,6 +107,7 @@ ion-label {
 .flex-space-between {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .flex-center {
