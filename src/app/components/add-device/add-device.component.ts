@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, FormControl, Validators, Form } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
+import { DevicesService } from 'src/app/services/devices.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-add-device',
@@ -12,7 +14,9 @@ export class AddDeviceComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private devicesService: DevicesService,
+    private toastService: ToastService,
   ) {
 
     this.addDeviceForm = this.formBuilder.group({
@@ -39,6 +43,12 @@ export class AddDeviceComponent implements OnInit {
     } else {
       const deviceName: string = addDeviceForm.value.deviceName;
       const platform: string = addDeviceForm.value.platform;
+      this.devicesService.addDevice(deviceName, platform).then(() => {
+        this.modalController.dismiss();
+        this.toastService.presentToast(
+          deviceName + ' was successfully added to the Roller device list'
+        );
+      });
     }
   }
 

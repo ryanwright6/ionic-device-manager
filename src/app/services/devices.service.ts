@@ -13,9 +13,28 @@ export class DevicesService {
   }
 
   getStoredDevices() {
-    this.storage.get('devices').then((val) => {
+    return this.storage.get('devices').then((val) => {
       this.deviceList = val;
-      console.log('Here are the devices', val);
+    });
+  }
+
+  clearStoredDevices() {
+    this.storage.clear();
+  }
+
+  async addDevice(deviceName: string, platform: string) {
+    return new Promise(async (resolve, reject) => {
+      this.deviceList.push({
+        name: deviceName,
+        platform: platform,
+        status: 'vacant',
+        employee: undefined,
+      });
+      this.storage.set('devices', this.deviceList).then(() => {
+        resolve();
+      }).catch(error => {
+        reject(error);
+      });
     });
   }
 }

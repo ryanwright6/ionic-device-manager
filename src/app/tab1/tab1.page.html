@@ -1,5 +1,10 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="clear()">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-buttons slot="end">
       <ion-button (click)="addDevice()">
         <ion-icon slot="icon-only" name="add"></ion-icon>
@@ -12,6 +17,12 @@
 </ion-header>
 
 <ion-content>
+  <ion-progress-bar type="indeterminate" *ngIf="loading"></ion-progress-bar>
+
+  <div class="placeholder">
+    No devices added, press the + button to add a new device.
+  </div>
+
   <ion-row>
     <ion-col size="3">
       <ion-card>

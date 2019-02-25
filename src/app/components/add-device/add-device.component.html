@@ -4,7 +4,7 @@
       <ion-button fill="clear" (click)="close()">Cancel</ion-button>
     </ion-col>
     <ion-col size="2">
-      <ion-button fill="clear" [disabled]="!addDeviceForm.valid" (click)="submit()">Submit</ion-button>
+      <ion-button fill="clear" [disabled]="!addDeviceForm.valid" (click)="submit(addDeviceForm)">Submit</ion-button>
     </ion-col>
   </ion-row>
 
