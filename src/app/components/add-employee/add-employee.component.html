@@ -1,3 +1,42 @@
-<p>
-  add-employee works!
-</p>
+<ion-card>
+  <ion-row class="button-row">
+    <ion-col size="2">
+      <ion-button fill="clear" (click)="close()">Cancel</ion-button>
+    </ion-col>
+    <ion-col size="2">
+      <ion-button fill="clear" [disabled]="!addEmployeeForm.valid" (click)="submit(addEmployeeForm)">Submit</ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="text-row">
+    <ion-col size="12">
+      <p class="title center">Add New Employee</p>
+      <p class="description center">Complete the form below and press submit to add a new employee.</p>
+    </ion-col>
+  </ion-row>
+
+  <form [formGroup]="addEmployeeForm">
+    <ion-item lines="none" class="input-item">
+      <ion-label>First Name</ion-label>
+      <ion-input formControlName="firstName" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none" class="input-item">
+      <ion-label>Last Name</ion-label>
+      <ion-input formControlName="lastName" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none" class="input-item">
+      <ion-label>Department</ion-label>
+      <ion-select formControlName="department" interface="popover" placeholder="Please Select">
+        <ion-select-option value="Marketing">Marketing</ion-select-option>
+        <ion-select-option value="Commercial">Commercial</ion-select-option>
+        <ion-select-option value="Development">Development</ion-select-option>
+        <ion-select-option value="Design">Design</ion-select-option>
+        <ion-select-option value="Project Management">Project Management</ion-select-option>
+        <ion-select-option value="Management">Management</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </form>
+
+</ion-card>
