@@ -15,6 +15,7 @@ export class AddDeviceComponent implements OnInit {
   public editing: boolean;
   public title = 'Add New Device';
   public description = 'Complete the form below and press submit to add a new device.';
+  public alreadyExists = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -55,22 +56,39 @@ export class AddDeviceComponent implements OnInit {
     } else {
       const deviceName: string = addDeviceForm.value.deviceName;
       const platform: string = addDeviceForm.value.platform;
-      if (this.editing !== true) {
-        this.devicesService.addDevice(deviceName, platform).then(() => {
-          this.modalController.dismiss();
-          this.toastService.presentToast(
-            deviceName + ' was successfully added to the Roller device list'
-          );
-        });
+      const index = await this.devicesService.deviceList.findIndex(obj => {
+        return obj.name === deviceName;
+      });
+      if (index === -1) {
+        if (this.editing !== true) {
+          this.addDevice(deviceName, platform);
+        } else {
+          this.updateDevice(deviceName, platform, this.device);
+        }
       } else {
-        this.devicesService.editDevice(deviceName, platform, this.device).then(() => {
-          this.modalController.dismiss();
-          this.toastService.presentToast(
-            deviceName + ' was successfully updated'
-          );
-        });
+        this.toastService.presentToast(
+          deviceName + ' already exists, devices must have a unique name!'
+        );
       }
     }
+  }
+
+  addDevice(deviceName: string, platform: string) {
+    this.devicesService.addDevice(deviceName, platform).then(() => {
+      this.modalController.dismiss();
+      this.toastService.presentToast(
+        deviceName + ' was successfully added to the Roller device list'
+      );
+    });
+  }
+
+  updateDevice(deviceName: string, platform: string, oldDeviceInfo: any) {
+    this.devicesService.editDevice(deviceName, platform, this.device).then(() => {
+      this.modalController.dismiss();
+      this.toastService.presentToast(
+        deviceName + ' was successfully updated'
+      );
+    });
   }
 
   delete() {
