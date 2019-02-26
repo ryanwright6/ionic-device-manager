@@ -28,7 +28,7 @@
   </div>
 
   <ion-row>
-    <ion-col size="3" *ngFor="let device of devicesService.deviceList">
+    <ion-col size="4" *ngFor="let device of devicesService.deviceList">
       <ion-card (click)="deviceClicked(device)">
         <ion-card-header class="custom-card-header">
           <ion-card-title class="custom-card-title">{{device.name}}</ion-card-title>

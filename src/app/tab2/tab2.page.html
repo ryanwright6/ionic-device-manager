@@ -19,7 +19,7 @@
   </div>
 
   <ion-row>
-    <ion-col size="3" *ngFor="let employee of employeeService.employeeList">
+    <ion-col size="4" *ngFor="let employee of employeeService.employeeList">
       <ion-card (click)="editEmployee(employee)">
         <div class="department-header" [ngStyle]="headerColour(employee.department)">
           {{employee.department}}
