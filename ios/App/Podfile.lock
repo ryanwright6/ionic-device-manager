@@ -19,10 +19,10 @@ EXTERNAL SOURCES:
     :path: "../capacitor-cordova-ios-plugins"
 
 SPEC CHECKSUMS:
-  Capacitor: dab3627ba6b80334e844e8ffb3373a76504aa5b6
-  CapacitorCordova: 245319f2ac2c40fb4fdc29ae39f1fc6f33441bec
-  CordovaPlugins: 7a96200a0cb13f05c2aa300b59a37927f4eace41
+  Capacitor: 0da2a263d4913ba46ecf59d605ef2868387b8885
+  CapacitorCordova: 98f8ff9e9e9d296e9dac6d344f26d729f85739a7
+  CordovaPlugins: 8178a81e03e1a021e46d67cc69d7be8252f473e7
 
 PODFILE CHECKSUM: 31d8a428413f290e2361b7d3a4bdaa17497bf723
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1
