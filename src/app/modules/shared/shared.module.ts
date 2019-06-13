@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddEmployeeComponent } from 'src/app/components/add-employee/add-employee.component';
 import { BookingComponent } from 'src/app/components/booking/booking.component';
+import { PipeModule } from '../pipe/pipe.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { BookingComponent } from 'src/app/components/booking/booking.component';
   imports: [
     CommonModule,
     IonicModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PipeModule
   ],
   exports: [
     AddDeviceComponent,

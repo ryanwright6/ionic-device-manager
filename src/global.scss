@@ -100,7 +100,7 @@ ion-card-subtitle {
 
 //Modal Styles
 
-form {
+form:not(.searchForm) {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   margin-top: 16px;
 }
@@ -144,5 +144,13 @@ form {
   }
   ion-icon {
     font-size: 32px;
+  }
+}
+
+.employee-search {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 17px;
+  ion-input {
+    padding: 0 6px !important;
   }
 }

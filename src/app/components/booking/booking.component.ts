@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { DevicesService } from 'src/app/services/devices.service';
 import { ToastService } from 'src/app/services/toast.service';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-booking',
@@ -10,6 +11,7 @@ import { ToastService } from 'src/app/services/toast.service';
   styleUrls: ['./booking.component.scss'],
 })
 export class BookingComponent implements OnInit {
+  public searchForm: FormGroup;
   public employeeSelectedId: any;
   public employeeSelected: any;
   public device: any;
@@ -18,8 +20,13 @@ export class BookingComponent implements OnInit {
     private modalController: ModalController,
     public employeeService: EmployeeService,
     private devicesService: DevicesService,
-    private toastService: ToastService
-  ) { }
+    private toastService: ToastService,
+    private formBuilder: FormBuilder,
+  ) {
+    this.searchForm = this.formBuilder.group({
+      employeeName: ['',],
+    });
+  }
 
   ngOnInit() { }
 
@@ -33,7 +40,6 @@ export class BookingComponent implements OnInit {
   }
 
   book() {
-    console.log('Booking', this.device, this.employeeSelected);
     this.devicesService.bookDevice(this.device, this.employeeSelected).then(() => {
       this.modalController.dismiss();
       this.toastService.presentToast(

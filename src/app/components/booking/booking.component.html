@@ -16,8 +16,15 @@
     </ion-col>
   </ion-row>
 
+  <form class="searchForm" [formGroup]='searchForm'>
+    <div class="employee-search flex-space-between" padding>
+      <ion-input type="text" placeholder="Search your name" formControlName="employeeName"></ion-input>
+    </div>
+  </form>
+
   <div class="employee-container">
-    <div class="employee-item flex-space-between" padding *ngFor="let employee of employeeService.employeeList"
+    <div class="employee-item flex-space-between" padding
+      *ngFor="let employee of (employeeService.employeeList | employeeSearch: this.searchForm.get('employeeName').value)"
       (click)="select(employee)">
       <ion-label>{{employee.firstName}} {{employee.lastName}}</ion-label>
       <ion-icon color="primary" slot="start" name="checkmark"
